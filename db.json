@@ -1,21 +1,20 @@
 {
-    "books": [
-      {
-        "id": 1,
-        "title": "The Golden Compass",
-        "image": "https://m.media-amazon.com/images/I/A1gACmqyxSL._AC_UF1000,1000_QL80_.jpg",
-        "rating": 5,
-        "genre": "fantasy",
-        "haveRead": true
-      },
-      {
-        "id": 2,
-        "title": "Gideon the Ninth",
-        "image": "https://m.media-amazon.com/images/I/412PSZfs4FL.jpg",
-        "rating": 4,
-        "genre": "fantasy",
-        "haveRead": true
-      }
-
-    ]
+  "books": [
+    {
+      "id": 1,
+      "title": "The Golden Compass",
+      "image": "https://m.media-amazon.com/images/I/A1gACmqyxSL._AC_UF1000,1000_QL80_.jpg",
+      "rating": 5,
+      "genre": "fantasy",
+      "haveRead": true
+    },
+    {
+      "id": 2,
+      "title": "Gideon the Ninth",
+      "image": "https://m.media-amazon.com/images/I/412PSZfs4FL.jpg",
+      "rating": 4,
+      "genre": "fantasy",
+      "haveRead": true
+    }
+  ]
 }

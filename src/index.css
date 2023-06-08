@@ -7,6 +7,8 @@ body {
 .book-item img {
   height: 300px;
   margin:auto;
+  border-width:5px;
+  border-style:solid;
 }
 
 .book-item {
