@@ -2,8 +2,17 @@ import React from "react";
 
 function AddBook() {
     
+    const formData = {
+        title:"",
+        // image:"",
+        // rating:0,
+        // genre:"",
+        // haveRead: false
+    };
+
     function handleSubmit(e) {
         e.preventDefault()
+       
     }
 
     return (

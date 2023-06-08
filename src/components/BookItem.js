@@ -40,7 +40,7 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
             <img src={book.image} alt="cover"/>
             {/* <p>{book.genre.toUpperCase()}</p> */}
             <p>Rating: {rating}</p>
-            <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Haven't Read" : "Have Read"}</button>
+            <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Have Read" : "Haven't Read"}</button>
             <button onClick={() => handleDeleteClick(book.id)}>Delete</button>
         </div>
     )
