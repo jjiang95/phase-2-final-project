@@ -10,7 +10,6 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
           })
           .then(resp => resp.json())
           .then(() => onDeleteClick(id))
-      
     }
 
     function handleReadToggle(id) {
@@ -24,8 +23,7 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
                 {
                   "haveRead": haveRead
                 }
-            )
-            
+            )     
         })
         .then(resp => resp.json())
         .then(updatedBook => onReadToggle(updatedBook))
@@ -35,13 +33,14 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
     for (let i=0; i < book.rating; i++) {
         rating.push("⭐")
     }
+
     return (
         <div className="book-item" key={book.id}>
             {/* <h2>{book.title.toUpperCase()}</h2> */}
             <img src={book.image} alt="cover"/>
             {/* <p>{book.genre.toUpperCase()}</p> */}
             <p>Rating: {rating}</p>
-            <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Have Read" : "Haven't Read"}</button>
+            <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Haven't Read" : "Have Read"}</button>
             <button onClick={() => handleDeleteClick(book.id)}>Delete</button>
         </div>
     )
