@@ -1,13 +1,19 @@
 import React from "react";
 
 function BookItem({ book }) {
+
+    const rating = [];
+    for (let i=0; i < book.rating; i++) {
+        rating.push("⭐")
+    }
     return (
         <div className="book-item" key={book.id}>
-            <h2>{book.title}</h2>
+            {/* <h2>{book.title.toUpperCase()}</h2> */}
             <img src={book.image} alt="cover"/>
-            <p>Genre: {book.genre}</p>
-            <p>Rating: {book.rating}</p>
-            <p>{book.haveRead ? "have read" : "have not read"}</p>
+            {/* <p>{book.genre.toUpperCase()}</p> */}
+            <p>Rating: {rating}</p>
+            {/* <p>{book.haveRead ? "have read" : "have not read"}</p> */}
+            <button>Delete</button>
         </div>
     )
 }
