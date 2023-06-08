@@ -1,16 +1,27 @@
 body {
   margin: 0;
-
-}
-
-code {
+  text-align:center;
 
 }
 
 .book-item img {
-  height: 500px;
+  height: 300px;
+  margin:auto;
 }
 
 .book-item {
   display: inline-grid;
+  padding:10px;
+  border-style:solid;
+  margin:10px;
+  width:250px;
+}
+
+.nav-link {
+  padding:10px;
+}
+
+.navbar {
+  display:block;
+  padding:10px;
 }
