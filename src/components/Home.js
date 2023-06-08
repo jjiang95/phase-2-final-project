@@ -5,6 +5,17 @@ function Home() {
 
     const [bookCollection, setBookCollection] = useState([])
     
+    function handleReadToggle(updatedBook) {
+        const updatedBooks = bookCollection.map(book => {
+            if (book.id === updatedBook.id) {
+                return updatedBook;
+            } else {
+                return book;
+            }
+        })
+        setBookCollection(updatedBooks)
+    }
+
     function handleDeleteClick(bookId) {
         const updatedBooks = bookCollection.filter(book => book.id !== bookId)
         setBookCollection(updatedBooks);
@@ -18,7 +29,7 @@ function Home() {
     return (
         <div>
             {bookCollection.map((book => (
-                <BookItem key={book.id} book={book} onDeleteClick={handleDeleteClick}/>
+                <BookItem onReadToggle={handleReadToggle} key={book.id} book={book} onDeleteClick={handleDeleteClick}/>
             )))}
         </div>
     )

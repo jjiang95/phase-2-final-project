@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-function BookItem({ book, onDeleteClick }) {
+function BookItem({ book, onDeleteClick, onReadToggle }) {
+
+    const [haveRead, setHaveRead] = useState(book.haveRead);
 
     function handleDeleteClick(id) {
         fetch(`http://localhost:4000/books/${id}`, {
@@ -10,6 +12,25 @@ function BookItem({ book, onDeleteClick }) {
           .then(() => onDeleteClick(id))
       
     }
+
+    function handleReadToggle(id) {
+        setHaveRead(!haveRead);
+        fetch(`http://localhost:4000/books/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(
+                {
+                  "haveRead": haveRead
+                }
+            )
+            
+        })
+        .then(resp => resp.json())
+        .then(updatedBook => onReadToggle(updatedBook))
+    }
+
     const rating = [];
     for (let i=0; i < book.rating; i++) {
         rating.push("⭐")
@@ -20,7 +41,7 @@ function BookItem({ book, onDeleteClick }) {
             <img src={book.image} alt="cover"/>
             {/* <p>{book.genre.toUpperCase()}</p> */}
             <p>Rating: {rating}</p>
-            {/* <p>{book.haveRead ? "have read" : "have not read"}</p> */}
+            <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Have Read" : "Haven't Read"}</button>
             <button onClick={() => handleDeleteClick(book.id)}>Delete</button>
         </div>
     )
