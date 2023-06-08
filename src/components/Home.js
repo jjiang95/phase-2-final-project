@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import BookItem from "./BookItem";
 
 function Home() {
 
     const [bookCollection, setBookCollection] = useState([])
+    
     useEffect(() => {
         fetch("http://localhost:4000/books")
         .then(resp => resp.json())
@@ -12,7 +14,7 @@ function Home() {
     return (
         <div>
             {bookCollection.map((book => (
-                <div key={book.id}>{book.title}</div>
+                <BookItem key={book.id} book={book}/>
             )))}
         </div>
     )
