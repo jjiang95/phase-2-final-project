@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function BookItem({ book, onDeleteClick }) {
 
-    const [haveRead, setHaveRead] = useState(book.haveRead);
+    // const [haveRead, setHaveRead] = useState(book.haveRead);
 
     function handleDeleteClick(id) {
         fetch(`http://localhost:4000/books/${id}`, {
@@ -38,7 +39,7 @@ function BookItem({ book, onDeleteClick }) {
         <div className={book.haveRead ? "have-read" : "haven't-read"} key={book.id}>
             <img src={book.image} alt="cover"/>
             <p>{book.haveRead ? rating : "--"}</p>
-            <button>Details</button>
+            <button><Link exact to={`/${book.id}`}>Details</Link></button>
             <button onClick={() => handleDeleteClick(book.id)}>Remove</button>
         </div>
     )
