@@ -4,14 +4,14 @@ body {
 
 }
 
-.book-item img {
+img {
   height: 300px;
   margin:auto;
   border-width:5px;
   border-style:solid;
 }
 
-.book-item {
+.have-read {
   display: inline-grid;
   padding:10px;
   border-style:solid;
@@ -20,6 +20,15 @@ body {
   border-width:1px;
 }
 
+.haven\'t-read {
+  display: inline-grid;
+  padding:10px;
+  border-style:solid;
+  margin:10px;
+  width:250px;
+  border-width:1px;
+  background-color: pink;
+}
 .nav-link {
   padding:10px;
 }

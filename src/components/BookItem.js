@@ -35,7 +35,7 @@ function BookItem({ book, onDeleteClick }) {
     }
 
     return (
-        <div className="book-item" key={book.id}>
+        <div className={book.haveRead ? "have-read" : "haven't-read"} key={book.id}>
             <img src={book.image} alt="cover"/>
             <p>{book.haveRead ? rating : "--"}</p>
             <button>Details</button>
