@@ -5,7 +5,7 @@ function AddBook() {
     const [haveRead, setHaveRead] = useState(true)
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
-    const [rating, setRating] = useState(5);
+    const [rating, setRating] = useState(0);
     const [genre, setGenre] = useState("fantasy")
     const [author, setAuthor] = useState("")
 
@@ -25,16 +25,9 @@ function AddBook() {
                 author: author   
             })
         })
-        .then(resp => resp.json())
-        .then(newBook => console.log(newBook))
-        // const newBook = {
-            // title: title,
-            // image: image,
-            // rating: rating,
-            // genre: genre,
-            // haveRead: haveRead,
-        // }
-        // console.log(newBook)
+        setTitle("");
+        setImage("");
+        setAuthor("");
     }
 
     function handleHaveRead(e) {
@@ -87,6 +80,7 @@ function AddBook() {
                 <br></br>
                 <label htmlFor="rating">Rating:</label>
                 <select onChange={handleRatingChange} name="rating">
+                    <option value="0"></option>
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>

@@ -3,6 +3,7 @@ import React from 'react';
 import Nav from "./Nav";
 import Home from './Home';
 import AddBook from './AddBook';
+import BookDetails from './BookDetails';
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route exact path="/new">
           <AddBook/>
+        </Route>
+        <Route exact path="/:id">
+          <BookDetails/>
         </Route>
       </Switch>
     </div>
