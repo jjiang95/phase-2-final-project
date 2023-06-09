@@ -1,29 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AddBook() {
     
-    // const formData = {
-    //     title:"",
-    //     image:"",
-    //     rating:0,
-    //     genre:"",
-    //     haveRead: false
-    // };
+    const [haveRead, setHaveRead] = useState(true)
+    const [title, setTitle] = useState("")
+    const [image, setImage] = useState("")
+    const [rating, setRating] = useState(5);
+    const [genre, setGenre] = useState("fantasy")
+    const [author, setAuthor] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault()
-       
+        fetch("http://localhost:4000/books", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                image: image,
+                rating: rating,
+                genre: genre,
+                haveRead: haveRead, 
+                author: author   
+            })
+        })
+        .then(resp => resp.json())
+        .then(newBook => console.log(newBook))
+        // const newBook = {
+            // title: title,
+            // image: image,
+            // rating: rating,
+            // genre: genre,
+            // haveRead: haveRead,
+        // }
+        // console.log(newBook)
+    }
+
+    function handleHaveRead(e) {
+        setHaveRead(e.target.value === "true")
+    }
+
+    function handleTitleChange(e) {
+        setTitle(e.target.value)
+    }
+
+    function handleGenreChange(e) {
+        setGenre(e.target.value)
+    }
+
+    function handleImgChange(e) {
+        setImage(e.target.value)
+    }
+
+    function handleRatingChange(e) {
+        setRating(parseInt(e.target.value))
+    }
+
+    function handleAuthorChange(e) {
+        setAuthor(e.target.value)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder="title"></input>
+                <input onChange={handleTitleChange} value={title} type="text" name="title" placeholder="title"></input>
                 <br></br>
-                <input type="text" name="image" placeholder="cover image URL"></input>
+                <input onChange={handleImgChange} value={image} type="text" name="image" placeholder="cover image URL"></input>
+                <br></br>
+                <input onChange={handleAuthorChange} value={author} type="text" name="author" placeholder="author"></input>
                 <br></br>
                 <label htmlFor="genre">Genre:</label>
-                <select name="genre">
+                <select onChange={handleGenreChange} name="genre">
                     <option value="fantasy">Fantasy</option>
                     <option value="sci-fi">Sci-Fi</option>
                     <option value="non-fiction">Non-Fiction</option>
@@ -32,13 +80,13 @@ function AddBook() {
                     <option value="other">Other</option>
                 </select>
                 <br></br>
-                <input value="have-read" name="have-read" type="radio" checked/>
-                <label htmlFor="have-read">Have Read</label><br></br>
-                <input value="haven't-read" name="have-read" type="radio"/>
-                <label htmlFor="haven't-read">Haven't Read</label><br></br>
+                <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
+                <label>Have Read</label><br></br>
+                <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
+                <label>Haven't Read</label><br></br>
                 <br></br>
                 <label htmlFor="rating">Rating:</label>
-                <select name="rating">
+                <select onChange={handleRatingChange} name="rating">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
