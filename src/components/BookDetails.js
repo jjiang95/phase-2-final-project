@@ -22,8 +22,8 @@ function BookDetails() {
     }
 
     return (
-        <div>
-            <img src={book.image}/>
+        <div className="book-details">
+            <img src={book.image} alt="book-cover"/>
             <h1>{book.title.toUpperCase()}</h1>
             <h2>{book.author.toUpperCase()}</h2>
             <h3>Genre: {book.genre.toUpperCase()}</h3>

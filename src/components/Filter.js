@@ -7,8 +7,8 @@ function Filter({ onFilterChange }) {
     }
 
     return (
-        <div>
-            <label className="label" htmlFor="filter-by-genre">Filter by genre:</label>
+        <div className="filter">
+            <label className="label" htmlFor="filter-by-genre">Filter by genre: </label>
             <select className="select-menu" onChange={handleFilterChange} name="filter-by-genre">
                 <option value="all">All</option>
                 <option value="fantasy">Fantasy</option>
