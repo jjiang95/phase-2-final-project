@@ -1,6 +1,7 @@
 body {
   margin: 0;
   text-align:center;
+  font-family:Calibri;
 
 }
 
@@ -100,4 +101,27 @@ img {
   padding: 2px 10px;
   border-radius: 4px;
   font-size: 16px;  
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer; 
+  width:auto;
+  margin:5px 5px;
+  display:inline-grid;
+  text-align:center;
+  font-size:16px;
+}
+
+.details-button {
+  color:white;
+  text-decoration:none;
+}
+
+.remove {
+  background-color:rgb(180, 61, 81);
 }

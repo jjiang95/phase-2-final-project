@@ -10,15 +10,6 @@
       "haveRead": true
     },
     {
-      "id": 2,
-      "title": "Gideon the Ninth",
-      "author": "Tamsyn Muir",
-      "image": "https://m.media-amazon.com/images/I/412PSZfs4FL.jpg",
-      "rating": 4,
-      "genre": "fantasy",
-      "haveRead": true
-    },
-    {
       "id": 3,
       "title": "The Rage of Dragons",
       "author": "Evan Winter",
@@ -62,6 +53,15 @@
       "haveRead": false,
       "author": "Lev Grossman",
       "id": 7
+    },
+    {
+      "title": "The Handmaid's Tale",
+      "image": "https://images.booksense.com/images/818/490/9780385490818.jpg",
+      "rating": 4,
+      "genre": "other",
+      "haveRead": true,
+      "author": "Margaret Atwood",
+      "id": 8
     }
   ]
 }

@@ -39,8 +39,10 @@ function BookItem({ book, onDeleteClick }) {
         <div className={book.haveRead ? "have-read" : "haven't-read"} key={book.id}>
             <img src={book.image} alt="cover"/>
             <p>{book.haveRead ? rating : "--"}</p>
-            <button><Link exact to={`/${book.id}`}>Details</Link></button>
-            <button onClick={() => handleDeleteClick(book.id)}>Remove</button>
+            <div className="button-container">
+                <button><Link className="details-button" exact to={`/${book.id}`}>Details</Link></button>
+                <button className="remove" onClick={() => handleDeleteClick(book.id)}>Remove</button>
+            </div>
         </div>
     )
 }
