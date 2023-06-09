@@ -53,6 +53,15 @@
       "haveRead": false,
       "author": "James S. A. Corey",
       "id": 6
+    },
+    {
+      "title": "The Magician's Land",
+      "image": "https://m.media-amazon.com/images/I/81mXDRKYYnL._AC_UF1000,1000_QL80_.jpg",
+      "rating": 0,
+      "genre": "fantasy",
+      "haveRead": false,
+      "author": "Lev Grossman",
+      "id": 7
     }
   ]
 }

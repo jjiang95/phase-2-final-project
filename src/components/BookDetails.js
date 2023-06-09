@@ -15,13 +15,21 @@ function BookDetails() {
     if(!book) {
         return <span>Loading...</span>
     }
+    
+    const rating = [];
+    for (let i=0; i < book.rating; i++) {
+        rating.push("⭐")
+    }
 
     return (
         <div>
             <img src={book.image}/>
-            <h1>{book.title}</h1>
-            <h2>Author: {book.author}</h2>
-            <p></p>
+            <h1>{book.title.toUpperCase()}</h1>
+            <h2>{book.author.toUpperCase()}</h2>
+            <h3>Genre: {book.genre.toUpperCase()}</h3>
+            <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
+            <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
+            <button>Edit</button>
         </div>
     )
 }
