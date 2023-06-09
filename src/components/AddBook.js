@@ -62,7 +62,7 @@ function AddBook() {
                 <input className="text-input" onChange={handleAuthorChange} value={author} type="text" name="author" placeholder="author"></input>
                 <div className="genre-rating-container">
                     <label className="label" htmlFor="genre">Genre:</label>
-                    <select onChange={handleGenreChange} name="genre">
+                    <select className="select-menu" onChange={handleGenreChange} name="genre">
                         <option value="fantasy">Fantasy</option>
                         <option value="sci-fi">Sci-Fi</option>
                         <option value="non-fiction">Non-Fiction</option>
@@ -71,7 +71,7 @@ function AddBook() {
                         <option value="other">Other</option>
                     </select>
                     <label className="label" htmlFor="rating">Rating:</label>
-                    <select onChange={handleRatingChange} name="rating">
+                    <select className="select-menu" onChange={handleRatingChange} name="rating">
                         <option value="0"></option>
                         <option value="5">5</option>
                         <option value="4">4</option>

@@ -56,7 +56,7 @@ img {
 
 .genre-rating-container {
   display:flex;
-  gap:5px;
+  gap:7px;
   margin:auto;
 }
 
@@ -67,15 +67,17 @@ img {
 }
 
 .submit {
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
-  cursor: pointer; 
-  width:150px;
+  cursor:pointer; 
+  width:100%;
   margin:auto;
   text-align:center;
+  font-size:16px;
+  transition-duration: 0.5s;
 }
 
 .submit:hover {
@@ -84,10 +86,18 @@ img {
 
 .text-input {
   padding:10px;
-  margin:5px;
-  font-size:16px
+  margin:5px 0px;
+  font-size:16px;
+  border-radius: 4px;
 }
 
 .label {
-  font-size:16px;
+  font-size: 18px;
+}
+
+.select-menu {
+  border: none;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 16px;  
 }
