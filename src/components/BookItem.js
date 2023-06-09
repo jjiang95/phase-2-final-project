@@ -13,7 +13,7 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
     }
 
     function handleReadToggle(id) {
-        setHaveRead(!haveRead);
+        setHaveRead((haveRead) => (!haveRead));
         fetch(`http://localhost:4000/books/${id}`, {
             method: "PATCH",
             headers: {
@@ -21,7 +21,7 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
             },
             body: JSON.stringify(
                 {
-                  "haveRead": haveRead
+                  "haveRead": !haveRead
                 }
             )     
         })
@@ -39,8 +39,9 @@ function BookItem({ book, onDeleteClick, onReadToggle }) {
             {/* <h2>{book.title.toUpperCase()}</h2> */}
             <img src={book.image} alt="cover"/>
             {/* <p>{book.genre.toUpperCase()}</p> */}
-            <p>Rating: {rating}</p>
+            <p>{rating}</p>
             <button onClick={() => handleReadToggle(book.id)}>{haveRead ? "Have Read" : "Haven't Read"}</button>
+            <button>Edit</button>
             <button onClick={() => handleDeleteClick(book.id)}>Delete</button>
         </div>
     )

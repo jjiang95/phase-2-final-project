@@ -1,10 +1,15 @@
 import React from "react";
 
-function Filter() {
+function Filter({ onFilterChange }) {
+
+    function handleFilterChange(e) {
+        onFilterChange(e.target.value)
+    }
+
     return (
         <div>
-            <label for="filter-by-genre">Filter by genre:</label>
-            <select name="filter-by-genre">
+            <label htmlFor="filter-by-genre">Filter by genre:</label>
+            <select onChange={handleFilterChange} name="filter-by-genre">
                 <option value="all">All</option>
                 <option value="fantasy">Fantasy</option>
                 <option value="sci-fi">Sci-Fi</option>

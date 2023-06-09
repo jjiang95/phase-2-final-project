@@ -2,13 +2,13 @@ import React from "react";
 
 function AddBook() {
     
-    const formData = {
-        title:"",
-        // image:"",
-        // rating:0,
-        // genre:"",
-        // haveRead: false
-    };
+    // const formData = {
+    //     title:"",
+    //     image:"",
+    //     rating:0,
+    //     genre:"",
+    //     haveRead: false
+    // };
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -22,7 +22,7 @@ function AddBook() {
                 <br></br>
                 <input type="text" name="image" placeholder="cover image URL"></input>
                 <br></br>
-                <label for="genre">Genre:</label>
+                <label htmlFor="genre">Genre:</label>
                 <select name="genre">
                     <option value="fantasy">Fantasy</option>
                     <option value="sci-fi">Sci-Fi</option>
@@ -33,11 +33,11 @@ function AddBook() {
                 </select>
                 <br></br>
                 <input value="have-read" name="have-read" type="radio" checked/>
-                <label for="have-read">Have Read</label><br></br>
+                <label htmlFor="have-read">Have Read</label><br></br>
                 <input value="haven't-read" name="have-read" type="radio"/>
-                <label for="haven't-read">Haven't Read</label><br></br>
+                <label htmlFor="haven't-read">Haven't Read</label><br></br>
                 <br></br>
-                <label for="rating">Rating:</label>
+                <label htmlFor="rating">Rating:</label>
                 <select name="rating">
                     <option value="5">5</option>
                     <option value="4">4</option>

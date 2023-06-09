@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BookItem from "./BookItem";
+import Filter from "./Filter";
 
 function Home() {
 
@@ -20,14 +21,30 @@ function Home() {
         const updatedBooks = bookCollection.filter(book => book.id !== bookId)
         setBookCollection(updatedBooks);
     }
+
+    function handleFilterChange(filter) {
+        fetch("http://localhost:4000/books")
+        .then(resp => resp.json())
+        .then(books => (
+            setBookCollection(books.filter(book => {
+                if (filter === "all") {
+                    return true;
+                } else {
+                    return filter === book.genre;
+                }
+            }))
+        ))
+    }
+    
     useEffect(() => {
         fetch("http://localhost:4000/books")
         .then(resp => resp.json())
         .then(books => setBookCollection(books)) 
-    },[])
+    }, [])
 
     return (
         <div>
+            <Filter onFilterChange={handleFilterChange}/>
             {bookCollection.map((book => (
                 <BookItem onReadToggle={handleReadToggle} key={book.id} book={book} onDeleteClick={handleDeleteClick}/>
             )))}
