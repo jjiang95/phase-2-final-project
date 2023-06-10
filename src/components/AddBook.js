@@ -81,9 +81,9 @@ function AddBook() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input className="radio"onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
+                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
                     <label className="label">Have Read</label>
-                    <input className="radio" onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
+                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Add to Collection" name="submit" type="submit"/>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function BookDetails() {
 
@@ -32,7 +32,7 @@ function BookDetails() {
                 <h3>Genre: {book.genre.toUpperCase()}</h3>
                 <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
                 <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
-                <button id="edit">Edit</button>
+                <button id="edit"><Link className="details-edit-button" exact to={`/${book.id}/edit`}>Edit</Link></button>
             </div>
         </div>
     )
