@@ -22,14 +22,18 @@ function BookDetails() {
     }
 
     return (
-        <div className="book-details">
-            <img src={book.image} alt="book-cover"/>
-            <h1>{book.title.toUpperCase()}</h1>
-            <h2>{book.author.toUpperCase()}</h2>
-            <h3>Genre: {book.genre.toUpperCase()}</h3>
-            <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
-            <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
-            <button>Edit</button>
+        <div className="details-container">
+            <div className="details-img">
+                <img src={book.image} alt="book-cover"/>
+            </div>
+            <div className="book-details">
+                <h1>{book.title.toUpperCase()}</h1>
+                <h2>{book.author.toUpperCase()}</h2>
+                <h3>Genre: {book.genre.toUpperCase()}</h3>
+                <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
+                <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
+                <button id="edit">Edit</button>
+            </div>
         </div>
     )
 }
