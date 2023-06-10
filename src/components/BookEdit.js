@@ -49,7 +49,7 @@ function BookEdit() {
             })
         })
         .then(() => {
-            history.push("/");
+            history.push(`/${params.id}`);
         })
 
     }
@@ -76,6 +76,10 @@ function BookEdit() {
 
     function handleAuthorChange(e) {
         setAuthor(e.target.value)
+    }
+
+    function handleCancel() {
+        history.push(`/${params.id}`)
     }
 
     return (
@@ -113,6 +117,7 @@ function BookEdit() {
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Update" name="submit" type="submit"/>
+                <button className="submit" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
         </>

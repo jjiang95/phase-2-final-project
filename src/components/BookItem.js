@@ -41,7 +41,7 @@ function BookItem({ book, onDeleteClick }) {
             <p>{book.rating === 0 ? "--" : rating}</p>
             <div className="button-container">
                 <button><Link className="details-edit-button" exact to={`/${book.id}`}>Details</Link></button>
-                <button className="remove" onClick={() => handleDeleteClick(book.id)}>Remove</button>
+                <button className="remove" onClick={() => handleDeleteClick(book.id)}>Delete</button>
             </div>
         </div>
     )

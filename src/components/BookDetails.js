@@ -32,7 +32,7 @@ function BookDetails() {
                 <h3>Genre: {book.genre.toUpperCase()}</h3>
                 <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
                 <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
-                <button id="edit"><Link className="details-edit-button" exact to={`/${book.id}/edit`}>Edit</Link></button>
+                <button id="edit"><Link className="details-edit-button" exact to={`/${book.id}/edit`}>Edit 📝</Link></button>
             </div>
         </div>
     )
