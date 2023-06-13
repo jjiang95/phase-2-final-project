@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState } from "react";
 
-function BookEdit() {
-    const history = useHistory();   
-    const params = useParams();
+function Form() {
     
-    const [book, setBook] = useState(null);
     const [formValid, setFormValid] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const [haveRead, setHaveRead] = useState(true)
@@ -37,8 +33,8 @@ function BookEdit() {
         } else {
 
             const parsedRating = parseInt(formData.rating)
-            fetch(`http://localhost:4000/books/${params.id}`, {
-                method: "PATCH",
+            fetch("http://localhost:4000/books", {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -48,9 +44,16 @@ function BookEdit() {
                     haveRead:haveRead,
                 })
             })
-            .then(() => {
-                history.push(`/${params.id}`);
+            setFormData({
+                title:"",
+                image:"",
+                rating:0,
+                genre:"fantasy",
+                author:"",
+                haveRead:true
             })
+            setFormValid(true)
+            setErrorMessage("")
         }
     }
 
@@ -65,35 +68,8 @@ function BookEdit() {
         setHaveRead(e.target.value === "true")
     }
 
-    useEffect(() => {
-        fetch(`http://localhost:4000/books/${params.id}`)
-        .then(resp => resp.json())
-        .then(book => {
-            setBook(book);
-            setFormData({
-                ...formData,
-                title:book.title,
-                image:book.image,
-                rating:book.rating,
-                genre:book.genre,
-                author:book.author,
-                haveRead:book.haveRead,
-            })
-        })
-    }, [params.id])
-
-    if(!book) {
-        return <span>Loading...</span>
-    }
-
-    function handleCancel() {
-        history.push(`/${params.id}`)
-    }
-
     return (
         <>
-        <h1>Editing: {book.title.toUpperCase()}</h1>
-        <div className="form-container">
             <form className="form" onSubmit={handleSubmit}>
                 <input className="text-input" onChange={handleChange} value={formData.title} type="text" name="title" placeholder="title"></input>
                 <input className="text-input" onChange={handleChange} value={formData.image} type="text" name="image" placeholder="cover image URL"></input>
@@ -119,18 +95,16 @@ function BookEdit() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
+                    <input onChange={handleHaveRead} value="true" name="haveRead" type="radio" checked={haveRead}/>
                     <label className="label">Have Read</label>
-                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
+                    <input onChange={handleHaveRead} value="false" name="haveRead" type="radio" checked={!haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
-                <input className="submit" value="Update" name="submit" type="submit"/>
-                <button className="submit" onClick={handleCancel}>Cancel</button>
+                <input className="submit" value="Add to Collection" name="submit" type="submit"/>
             </form>
-            <h2 id="submit-message">{formValid ? "Success!" : errorMessage}</h2>
-        </div>
-        </>
+        <h2 id="submit-message">{formValid ? "Success!" : errorMessage}</h2>
+    </>
     )
 }
 
-export default BookEdit;
+export default Form;

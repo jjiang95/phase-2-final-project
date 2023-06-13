@@ -2,70 +2,81 @@ import React, { useState } from "react";
 
 function AddBook() {
     
+    const [formValid, setFormValid] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
     const [haveRead, setHaveRead] = useState(true)
-    const [title, setTitle] = useState("")
-    const [image, setImage] = useState("")
-    const [rating, setRating] = useState(0);
-    const [genre, setGenre] = useState("fantasy")
-    const [author, setAuthor] = useState("")
+    const [formData, setFormData] = useState({
+        title:"",
+        image:"",
+        rating:0,
+        genre:"fantasy",
+        author:"",
+        haveRead:true
+    })
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:4000/books", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                image: image,
-                rating: rating,
-                genre: genre,
-                haveRead: haveRead, 
-                author: author   
+        if (
+            formData.title.trim() === "" ||
+            formData.image.trim() === "" ||
+            formData.author.trim() === ""
+        ) {
+            setFormValid(false)
+            setErrorMessage("Please fill in all fields.")
+            return;
+        } else if (
+            !formData.image.trim().includes(".jpg" || ".png")
+        ) {
+            setFormValid(false)
+            setErrorMessage("Please use a valid image URL.")
+            return;
+        } else {
+
+            const parsedRating = parseInt(formData.rating)
+            fetch("http://localhost:4000/books", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    rating:parsedRating,
+                    haveRead:haveRead,
+                })
             })
-        })
-        setTitle("");
-        setImage("");
-        setAuthor("");
-        setGenre("fantasy");
-        setRating(0);
-        setHaveRead(true);
+            setFormData({
+                title:"",
+                image:"",
+                rating:0,
+                genre:"fantasy",
+                author:"",
+                haveRead:true
+            })
+            setFormValid(true)
+            setErrorMessage("")
+        }
     }
 
+    function handleChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+    
     function handleHaveRead(e) {
         setHaveRead(e.target.value === "true")
-    }
-
-    function handleTitleChange(e) {
-        setTitle(e.target.value)
-    }
-
-    function handleGenreChange(e) {
-        setGenre(e.target.value)
-    }
-
-    function handleImgChange(e) {
-        setImage(e.target.value)
-    }
-
-    function handleRatingChange(e) {
-        setRating(parseInt(e.target.value))
-    }
-
-    function handleAuthorChange(e) {
-        setAuthor(e.target.value)
     }
 
     return (
         <div className="form-container">
             <form className="form" onSubmit={handleSubmit}>
-                <input className="text-input" onChange={handleTitleChange} value={title} type="text" name="title" placeholder="title"></input>
-                <input className="text-input" onChange={handleImgChange} value={image} type="text" name="image" placeholder="cover image URL"></input>
-                <input className="text-input" onChange={handleAuthorChange} value={author} type="text" name="author" placeholder="author"></input>
+                <input className="text-input" onChange={handleChange} value={formData.title} type="text" name="title" placeholder="title"></input>
+                <input className="text-input" onChange={handleChange} value={formData.image} type="text" name="image" placeholder="cover image URL"></input>
+                <input className="text-input" onChange={handleChange} value={formData.author} type="text" name="author" placeholder="author"></input>
                 <div className="genre-rating-container">
                     <label className="label" htmlFor="genre">Genre:</label>
-                    <select className="select-menu" onChange={handleGenreChange} value={genre} name="genre">
+                    <select className="select-menu" onChange={handleChange} value={formData.genre} name="genre">
                         <option value="fantasy">Fantasy</option>
                         <option value="sci-fi">Sci-Fi</option>
                         <option value="non-fiction">Non-Fiction</option>
@@ -74,7 +85,7 @@ function AddBook() {
                         <option value="other">Other</option>
                     </select>
                     <label className="label" htmlFor="rating">Rating:</label>
-                    <select className="select-menu" onChange={handleRatingChange} value={rating} name="rating">
+                    <select className="select-menu" onChange={handleChange} value={formData.rating} name="rating">
                         <option value="0"></option>
                         <option value="5">⭐⭐⭐⭐⭐</option>
                         <option value="4">⭐⭐⭐⭐</option>
@@ -84,13 +95,14 @@ function AddBook() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
+                    <input onChange={handleHaveRead} value="true" name="haveRead" type="radio" checked={haveRead}/>
                     <label className="label">Have Read</label>
-                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
+                    <input onChange={handleHaveRead} value="false" name="haveRead" type="radio" checked={!haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Add to Collection" name="submit" type="submit"/>
             </form>
+            <h2 id="submit-message">{formValid ? "Success!" : errorMessage}</h2>
         </div>
     )
 }

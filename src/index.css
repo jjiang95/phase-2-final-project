@@ -159,3 +159,7 @@ button {
   margin:auto;
   text-align:center;
 }
+
+#submit-message {
+  color:red;
+}

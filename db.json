@@ -116,6 +116,24 @@
       "haveRead": false,
       "author": "Sequoia Nagamatsu",
       "id": 14
+    },
+    {
+      "title": "Pride and Prejudice",
+      "image": "https://kbimages1-a.akamaihd.net/ad12ce73-aa34-473e-9a53-77a50360c239/1200/1200/False/pride-prejudice-13.jpg",
+      "rating": 4,
+      "genre": "romance",
+      "author": "Jane Austen",
+      "haveRead": true,
+      "id": 15
+    },
+    {
+      "title": "Murder on the Orient Express",
+      "image": "https://m.media-amazon.com/images/I/51GIWJaVDhL.jpg",
+      "rating": 0,
+      "genre": "mystery",
+      "author": "Agatha Christie",
+      "haveRead": false,
+      "id": 16
     }
   ]
 }
