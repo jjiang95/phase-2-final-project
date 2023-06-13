@@ -132,7 +132,7 @@
       "rating": 0,
       "genre": "mystery",
       "author": "Agatha Christie",
-      "haveRead": false,
+      "haveRead": true,
       "id": 16
     }
   ]

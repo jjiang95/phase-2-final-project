@@ -28,7 +28,7 @@ function AddBook() {
             !formData.image.trim().includes(".jpg" || ".png")
         ) {
             setFormValid(false)
-            setErrorMessage("Please use a valid image URL.")
+            setErrorMessage("Please enter a valid image URL.")
             return;
         } else {
 

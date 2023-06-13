@@ -32,10 +32,9 @@ function BookEdit() {
             !formData.image.trim().includes(".jpg" || ".png")
         ) {
             setFormValid(false)
-            setErrorMessage("Please use a valid image URL.")
+            setErrorMessage("Please enter a valid image URL.")
             return;
         } else {
-
             const parsedRating = parseInt(formData.rating)
             fetch(`http://localhost:4000/books/${params.id}`, {
                 method: "PATCH",
@@ -53,7 +52,11 @@ function BookEdit() {
             })
         }
     }
-
+    
+    function handleCancel() {
+        history.push(`/${params.id}`)
+    }
+    
     function handleChange(e) {
         setFormData({
             ...formData,
@@ -64,7 +67,7 @@ function BookEdit() {
     function handleHaveRead(e) {
         setHaveRead(e.target.value === "true")
     }
-
+    
     useEffect(() => {
         fetch(`http://localhost:4000/books/${params.id}`)
         .then(resp => resp.json())
@@ -86,9 +89,6 @@ function BookEdit() {
         return <span>Loading...</span>
     }
 
-    function handleCancel() {
-        history.push(`/${params.id}`)
-    }
 
     return (
         <>
@@ -119,9 +119,9 @@ function BookEdit() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={haveRead}/>
+                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={formData.haveRead}/>
                     <label className="label">Have Read</label>
-                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!haveRead}/>
+                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!formData.haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Update" name="submit" type="submit"/>

@@ -35,6 +35,13 @@ function Home() {
             }))
         ))
     }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    }
     
     useEffect(() => {
         fetch("http://localhost:4000/books")
@@ -48,6 +55,8 @@ function Home() {
             {bookCollection.map((book => (
                 <BookItem key={book.id} book={book} onDeleteClick={handleDeleteClick}/>
             )))}
+            <br></br>
+            <button onClick={scrollToTop}>Back to Top</button>
         </div>
     )
 }
