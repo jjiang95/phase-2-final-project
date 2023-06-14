@@ -21,7 +21,7 @@ function Filter({ onGenreChange, onReadChange, onTitleChange }) {
                 <option value="unread">Unread</option>
             </select>
             <label className="label" htmlFor="search-by-title">Search by title: </label>
-            <input onChange={onTitleChange} type="text" name="title" placeholder="title"></input>
+            <input id="title-search" onChange={onTitleChange} type="text" name="title" placeholder="title"></input>
         </div>
     )
 }

@@ -23,7 +23,7 @@ function Home() {
     }
 
     function handleTitleChange(e) {
-        setTitleFilter(e.target.value)
+        setTitleFilter(e.target.value.toLowerCase())
     }
 
     function scrollToTop() {
@@ -51,11 +51,11 @@ function Home() {
                 }
             } else {
                 if (haveReadFilter === "all") {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase());
+                    return book.title.toLowerCase().includes(titleFilter);
                 } else if (haveReadFilter === "read") {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase()) && book.haveRead;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead;
                 } else {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase()) && book.haveRead === false;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead === false;
                 }
             }
         } else {
@@ -69,11 +69,11 @@ function Home() {
                 }
             } else {
                 if (haveReadFilter === "all") {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase()) && book.genre === genreFilter;
+                    return book.title.toLowerCase().includes(titleFilter) && book.genre === genreFilter;
                 } else if (haveReadFilter === "read") {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase()) && book.haveRead;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead;
                 } else {
-                    return book.title.toLowerCase().includes(titleFilter.toLowerCase()) && book.haveRead === false;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead === false;
                 }
             }
         }

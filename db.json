@@ -116,6 +116,33 @@
       "author": "Agatha Christie",
       "haveRead": true,
       "id": 16
+    },
+    {
+      "title": "To Sleep in a Sea of Stars",
+      "image": "https://m.media-amazon.com/images/I/91oK-po6+GL._AC_UF1000,1000_QL80_.jpg",
+      "rating": 0,
+      "genre": "sci-fi",
+      "author": "Christopher Paolini",
+      "haveRead": false,
+      "id": 17
+    },
+    {
+      "title": "Slaughterhouse Five",
+      "image": "https://m.media-amazon.com/images/I/71QcX1DbklL._AC_UF1000,1000_QL80_.jpg",
+      "rating": 0,
+      "genre": "other",
+      "author": "Kurt Vonnegut",
+      "haveRead": false,
+      "id": 18
+    },
+    {
+      "title": "The Song of Achilles",
+      "image": "https://images.booksense.com/images/624/060/9780062060624.jpg",
+      "rating": 5,
+      "genre": "romance",
+      "author": "Madeline Miller",
+      "haveRead": true,
+      "id": 19
     }
   ]
 }
