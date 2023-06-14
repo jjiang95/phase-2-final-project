@@ -117,11 +117,17 @@ button {
   font-size: 18px;
 }
 
+.filter {
+  display:flex;
+  justify-content:center;
+  column-gap: 10px;
+}
+
 .select-menu {
   border: none;
   padding: 2px 10px;
   border-radius: 4px;
-  font-size: 16px;  
+  font-size: 16px;
 }
 
 .details-edit-button {
@@ -157,7 +163,6 @@ button {
 
 #edit {
   margin:auto;
-  text-align:center;
 }
 
 #submit-message {

@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function BookItem({ book, onDeleteClick }) {
 
-    // const [haveRead, setHaveRead] = useState(book.haveRead);
+    const history = useHistory();
 
     function handleDeleteClick(id) {
         fetch(`http://localhost:4000/books/${id}`, {
@@ -13,22 +13,9 @@ function BookItem({ book, onDeleteClick }) {
           .then(() => onDeleteClick(id))
     }
 
-    // function handleReadToggle(id) {
-    //     setHaveRead((haveRead) => (!haveRead));
-    //     fetch(`http://localhost:4000/books/${id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type":"application/json"
-    //         },
-    //         body: JSON.stringify(
-    //             {
-    //               "haveRead": !haveRead
-    //             }
-    //         )     
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(updatedBook => onReadToggle(updatedBook))
-    // }
+    function handleDetailsClick() {
+        history.push(`/${book.id}`)
+    }
 
     const rating = [];
     for (let i=0; i < book.rating; i++) {
@@ -40,7 +27,7 @@ function BookItem({ book, onDeleteClick }) {
             <img src={book.image} alt="cover"/>
             <p>{book.rating === 0 ? "--" : rating}</p>
             <div className="button-container">
-                <button><Link className="details-edit-button" exact to={`/${book.id}`}>Details</Link></button>
+                <button onClick={handleDetailsClick}>Details</button>
                 <button className="remove" onClick={() => handleDeleteClick(book.id)}>Delete</button>
             </div>
         </div>

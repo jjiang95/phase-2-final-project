@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 
 function BookDetails() {
 
+    const history = useHistory();
     const [book, setBook] = useState(null);
     const params = useParams();
     
@@ -11,11 +12,15 @@ function BookDetails() {
         .then(resp => resp.json())
         .then(book => setBook(book))
     }, [params.id])
-
+    
     if(!book) {
         return <span>Loading...</span>
     }
     
+    function handleEditClick() {
+        history.push(`/${book.id}/edit`)
+    }
+
     const rating = [];
     for (let i=0; i < book.rating; i++) {
         rating.push("⭐")
@@ -32,7 +37,7 @@ function BookDetails() {
                 <h3>Genre: {book.genre.toUpperCase()}</h3>
                 <h3>Have Read: {book.haveRead ? "✅" : "❌"}</h3>
                 <h3>Rating: {book.rating === 0 ? "--" : rating}</h3>
-                <button id="edit"><Link className="details-edit-button" exact to={`/${book.id}/edit`}>Edit 📝</Link></button>
+                <button onClick={handleEditClick} id="edit">Edit 📝</button>
             </div>
         </div>
     )

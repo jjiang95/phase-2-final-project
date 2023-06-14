@@ -6,23 +6,12 @@ function Home() {
 
     const [bookCollection, setBookCollection] = useState([])
     
-    // function handleReadToggle(updatedBook) {
-    //     const updatedBooks = bookCollection.map(book => {
-    //         if (book.id === updatedBook.id) {
-    //             return updatedBook;
-    //         } else {
-    //             return book;
-    //         }
-    //     })
-    //     setBookCollection(updatedBooks)
-    // }
-
     function handleDeleteClick(bookId) {
         const updatedBooks = bookCollection.filter(book => book.id !== bookId)
         setBookCollection(updatedBooks);
     }
 
-    function handleFilterChange(filter) {
+    function handleGenreChange(filter) {
         fetch("http://localhost:4000/books")
         .then(resp => resp.json())
         .then(books => (
@@ -32,6 +21,22 @@ function Home() {
                 } else {
                     return filter === book.genre;
                 }
+            }))
+        ))
+    }
+
+    function handleReadChange(filter) {
+        fetch("http://localhost:4000/books")
+        .then(resp => resp.json())
+        .then(books => (
+            setBookCollection(books.filter(book => {
+                if (filter === "all") {
+                    return true;
+                } else if (filter === "unread") {
+                    return book.haveRead === false;
+                } else {
+                    return book.haveRead;
+                } 
             }))
         ))
     }
@@ -51,7 +56,7 @@ function Home() {
 
     return (
         <div>
-            <Filter onFilterChange={handleFilterChange}/>
+            <Filter onReadChange={handleReadChange} onGenreChange={handleGenreChange}/>
             {bookCollection.map((book => (
                 <BookItem key={book.id} book={book} onDeleteClick={handleDeleteClick}/>
             )))}
