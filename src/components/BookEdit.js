@@ -36,7 +36,7 @@ function BookEdit() {
             return;
         } else {
             const parsedRating = parseInt(formData.rating)
-            fetch(`${process.env.REACT_APP_API_URL}/${params.id}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/books/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -73,6 +73,7 @@ function BookEdit() {
         .then(resp => resp.json())
         .then(book => {
             setBook(book);
+            //pre-fills the form with book's values
             setFormData({
                 ...formData,
                 title:book.title,

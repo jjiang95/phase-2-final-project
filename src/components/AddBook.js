@@ -16,6 +16,7 @@ function AddBook() {
 
     function handleSubmit(e) {
         e.preventDefault()
+        //input validation
         if (
             formData.title.trim() === "" ||
             formData.image.trim() === "" ||
@@ -31,7 +32,8 @@ function AddBook() {
             setErrorMessage("Please enter a valid image URL.")
             return;
         } else {
-
+        //if all inputs are valid
+            //changes string value from form field into number
             const parsedRating = parseInt(formData.rating)
             fetch(`${process.env.REACT_APP_API_URL}/books`, {
                 method: "POST",

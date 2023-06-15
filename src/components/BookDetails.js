@@ -8,7 +8,7 @@ function BookDetails() {
     const params = useParams();
     
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/${params.id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/books/${params.id}`)
         .then(resp => resp.json())
         .then(book => setBook(book))
     }, [params.id])

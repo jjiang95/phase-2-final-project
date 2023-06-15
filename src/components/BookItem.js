@@ -6,7 +6,7 @@ function BookItem({ book, onDeleteClick }) {
     const history = useHistory();
 
     function handleDeleteClick(id) {
-        fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/books/${id}`, {
             method: "DELETE"
           })
           .then(resp => resp.json())
