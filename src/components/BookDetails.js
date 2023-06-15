@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 function BookDetails() {
 
@@ -8,7 +8,7 @@ function BookDetails() {
     const params = useParams();
     
     useEffect(() => {
-        fetch(`http://localhost:4000/books/${params.id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/${params.id}`)
         .then(resp => resp.json())
         .then(book => setBook(book))
     }, [params.id])

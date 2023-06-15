@@ -8,7 +8,7 @@ Welcome to my final project of phase 2 at Flatiron! This is a book collection/tr
 
 # Installation
 
-Fork this repository into your local files. `cd` into the app directory and run `npm start` in your terminal. In another terminal window, run `json-server -p 4000 db.json` to host the db.json database from a different port.
+Fork this repository into your local files. `cd` into the app directory and run `npm start` in your terminal
 
 # Usage
 

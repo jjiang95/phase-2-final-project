@@ -33,7 +33,7 @@ function AddBook() {
         } else {
 
             const parsedRating = parseInt(formData.rating)
-            fetch("http://localhost:4000/books", {
+            fetch(`${process.env.REACT_APP_API_URL}/books`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

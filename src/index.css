@@ -175,9 +175,10 @@ button {
   margin:auto;
 }
 
-#submit-message {
-  color:red;
+.submit-message {
+  color:black;
 }
+
 
 #title-search {
   font-size:16px;

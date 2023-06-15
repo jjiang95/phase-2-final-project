@@ -34,7 +34,7 @@ function Home() {
     }
     
     useEffect(() => {
-        fetch("http://localhost:4000/books")
+        fetch(`${process.env.REACT_APP_API_URL}/books`)
         .then(resp => resp.json())
         .then(books => setBookCollection(books)) 
     }, [])

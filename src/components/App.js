@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="page-title">My Book Collection</h1>
+      <h1 className="page-title">MY BOOK COLLECTION</h1>
       <Nav/>
       <Switch>
         <Route exact path="/">

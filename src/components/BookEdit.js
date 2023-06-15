@@ -36,7 +36,7 @@ function BookEdit() {
             return;
         } else {
             const parsedRating = parseInt(formData.rating)
-            fetch(`http://localhost:4000/books/${params.id}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -69,7 +69,7 @@ function BookEdit() {
     }
     
     useEffect(() => {
-        fetch(`http://localhost:4000/books/${params.id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/books/${params.id}`)
         .then(resp => resp.json())
         .then(book => {
             setBook(book);
@@ -127,7 +127,7 @@ function BookEdit() {
                 <input className="submit" value="Update" name="submit" type="submit"/>
                 <button className="submit" onClick={handleCancel}>Cancel</button>
             </form>
-            <h2 id="submit-message">{formValid ? "Success!" : errorMessage}</h2>
+            <h2 className="submit-message">{formValid ? "Success!" : errorMessage}</h2>
         </div>
         </>
     )
