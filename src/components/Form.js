@@ -63,7 +63,7 @@ function Form({ formData, handleChange, handleSubmit }) {
             </div>
             <input className="submit" value="Submit" name="submit" type="submit"/>
         </form>
-        <h2 className="submit-message">{formValid ? "Success!" : errorMessage}</h2>
+        <h2 className={formValid ? "success-message" : "error-message"}>{formValid ? "Success!" : errorMessage}</h2>
         </>
     )
 }

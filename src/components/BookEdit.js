@@ -17,6 +17,7 @@ function BookEdit() {
     })
 
     function handleSubmit() {
+        //changes string value from form field into number
         const parsedRating = parseInt(formData.rating)
         fetch(`${process.env.REACT_APP_API_URL}/books/${params.id}`, {
             method: "PATCH",
