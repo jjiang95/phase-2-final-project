@@ -39,6 +39,10 @@ function Home() {
         .then(books => setBookCollection(books)) 
     }, [])
 
+    if(!bookCollection) {
+        return <span>Loading...</span>
+    }
+
     const displayedBooks = bookCollection.filter((book) => {
         //all possible conditions of the three filter states
         if (genreFilter === "all") {

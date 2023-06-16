@@ -4,7 +4,6 @@ function AddBook() {
     
     const [formValid, setFormValid] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [haveRead, setHaveRead] = useState(true)
     const [formData, setFormData] = useState({
         title:"",
         image:"",
@@ -43,7 +42,6 @@ function AddBook() {
                 body: JSON.stringify({
                     ...formData,
                     rating:parsedRating,
-                    haveRead:haveRead,
                 })
             })
             setFormData({
@@ -60,16 +58,19 @@ function AddBook() {
     }
 
     function handleChange(e) {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name !== "haveRead") {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value
+            })
+        } else {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value === "true"
+            })
+        }
     }
     
-    function handleHaveRead(e) {
-        setHaveRead(e.target.value === "true")
-    }
-
     return (
         <div className="form-container">
             <form className="form" onSubmit={handleSubmit}>
@@ -97,14 +98,14 @@ function AddBook() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input onChange={handleHaveRead} value="true" name="haveRead" type="radio" checked={haveRead}/>
+                    <input onChange={handleChange} value="true" name="haveRead" type="radio" checked={formData.haveRead}/>
                     <label className="label">Have Read</label>
-                    <input onChange={handleHaveRead} value="false" name="haveRead" type="radio" checked={!haveRead}/>
+                    <input onChange={handleChange} value="false" name="haveRead" type="radio" checked={!formData.haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Add to Collection" name="submit" type="submit"/>
             </form>
-            <h2 id="submit-message">{formValid ? "Success!" : errorMessage}</h2>
+            <h2 className="submit-message">{formValid ? "Success!" : errorMessage}</h2>
         </div>
     )
 }

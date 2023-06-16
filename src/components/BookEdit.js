@@ -8,7 +8,6 @@ function BookEdit() {
     const [book, setBook] = useState(null);
     const [formValid, setFormValid] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [haveRead, setHaveRead] = useState(true)
     const [formData, setFormData] = useState({
         title:"",
         image:"",
@@ -44,7 +43,6 @@ function BookEdit() {
                 body: JSON.stringify({
                     ...formData,
                     rating:parsedRating,
-                    haveRead:haveRead,
                 })
             })
             .then(() => {
@@ -58,16 +56,19 @@ function BookEdit() {
     }
     
     function handleChange(e) {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name !== "haveRead") {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value
+            })
+        } else {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value === "true"
+            })
+        }
     }
-    
-    function handleHaveRead(e) {
-        setHaveRead(e.target.value === "true")
-    }
-    
+        
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/books/${params.id}`)
         .then(resp => resp.json())
@@ -89,7 +90,6 @@ function BookEdit() {
     if(!book) {
         return <span>Loading...</span>
     }
-
 
     return (
         <>
@@ -120,9 +120,9 @@ function BookEdit() {
                     </select>
                 </div>
                 <div className="radio-group">
-                    <input onChange={handleHaveRead} value="true" name="have-read" type="radio" checked={formData.haveRead}/>
+                    <input onChange={handleChange} value="true" name="haveRead" type="radio" checked={formData.haveRead}/>
                     <label className="label">Have Read</label>
-                    <input onChange={handleHaveRead} value="false" name="have-read" type="radio" checked={!formData.haveRead}/>
+                    <input onChange={handleChange} value="false" name="haveRead" type="radio" checked={!formData.haveRead}/>
                     <label className="label">Haven't Read</label>
                 </div>
                 <input className="submit" value="Update" name="submit" type="submit"/>
