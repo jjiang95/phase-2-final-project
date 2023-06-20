@@ -4,11 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # My Book Collection
 
+[Link to App](#)
+
 Welcome to my final project of phase 2 at Flatiron! This is a book collection/tracker app built with React that allows you to add/delete books to both the gallery and the database, view each book's details on a separately-routed page, and edit existing entries. Filter by genre, title, and/or read status.  
 
 # Installation
 
-Fork this repository into your local files. `cd` into the app directory and run `npm start` in your terminal.
+Fork this repository into your local files. `cd` into the directory and run `npm start` in your terminal. The app will be hosted at `http://localhost:3001`.
+
+Fork the app's backend repo found [here](https://github.com/jjiang95/phase-2-final-project-backend). `cd` into the directory on a new terminal window and run `npm run dev`. The backend database will be hosted at `http://localhost:3000`.
 
 # Usage
 
