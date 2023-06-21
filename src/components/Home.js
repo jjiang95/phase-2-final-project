@@ -72,9 +72,9 @@ function Home() {
                 if (haveReadFilter === "all") {
                     return book.title.toLowerCase().includes(titleFilter) && book.genre === genreFilter;
                 } else if (haveReadFilter === "read") {
-                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead && book.genre === genreFilter;
                 } else {
-                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead === false;
+                    return book.title.toLowerCase().includes(titleFilter) && book.haveRead === false && book.genre === genreFilter;
                 }
             }
         }
