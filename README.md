@@ -7,9 +7,9 @@ Welcome to my final project of phase 2 at Flatiron! This is a book collection/tr
 
 ## Installation
 
-Fork this repository into your local files. `cd` into the directory and run `npm start` in your terminal. The app will be hosted at `http://localhost:3001`.
+Fork this repository into your local files. `cd` into the directory and run `npm install`, then `npm start` in your terminal. The app will be hosted at `http://localhost:3001`.
 
-Fork the app's backend repo found [here](https://github.com/jjiang95/phase-2-final-project-backend). `cd` into the directory on a new terminal window and run `npm run dev`. The backend database will be hosted at `http://localhost:3000`.
+Fork the app's backend repo found [here](https://github.com/jjiang95/phase-2-final-project-backend). `cd` into the directory on a new terminal window and run `npm install`, then `npm run dev`. The backend database will be hosted at `http://localhost:3000`.
 
 ## Usage
 
